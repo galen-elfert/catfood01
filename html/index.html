@@ -3,9 +3,34 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>WebIOPi | Light Control</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/webiopi.js"></script>
+
     <script type="text/javascript">
-        webiopi().ready(init);
+    
+
+    $(document).ready(function(){
+        
+        $("#cat1").click(function(){
+            $("#cat2").removeClass("active");
+            $("#cat1").addClass("active");   
+            $("#catpic").attr("src", "cat1.jpg");
+            $("#cat").text("Whiskers");
+        });
+
+        $("#cat2").click(function(){
+            $("#cat1").removeClass("active");
+            $("#cat2").addClass("active");   
+            $("#catpic").attr("src", "cat2.jpg");
+            $("#cat").text("Fluffington");
+        });
+    });
+    
+    webiopi().ready(init);
 
     function init() {
         setInterval(updateUI, 1000);
@@ -26,12 +51,33 @@
             $("#cat").text("Cat " + data.slice(1) + " eating."); 
         }
     */
+    
     </script>
+
 </head>
 
 <body>
-    <!-- Cat diet 0: <input type="text" id="catDiet0" /><br>
-        Cat diet 1: <input type="text" id="catDiet1" /><br> -->
-        <div align="center">Status: <span id="cat"></span></div>
+    <div class="container">
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <div class="btn-group btn-group-justified">
+                <div class="btn-group">
+                <button type="button" class="btn btn-primary active" id="cat1">Cat 1</button>
+                </div>
+                <div class="btn-group">
+                <button type="button" class="btn btn-primary active" id="cat2">Cat 2</button>
+                </div>
+            </div>
+            <div id="imgdiv">
+                <img src="cat1.jpg" class="img-responsive" id="catpic"></img>
+            </div>
+            <div id="status">
+            Status: <span id="cat">something</span>
+            </div>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    </div>
 </body>
 </html>
