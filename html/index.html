@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>WebIOPi | Light Control</title>
+    <script type="text/javascript" src="/webiopi.js"></script>
+    <script type="text/javascript">
+        webiopi().ready(init);
+
+    function init() {
+        setInterval(updateUI, 1000);
+    }
+    
+    function updateUI() {
+        webiopi().callMacro("getState", [], stateCallback);
+    }
+
+    function stateCallback(macroName, args, data) {
+        $("#cat").text(data);
+    }
+    /*
+    function OTHERstateCallback(macroName, data) {
+        if(data.charAt(0) == "c") {
+            $("#cat").text("Cat " + data.slice(1,2) + " ate: " + data.slice(2)); 
+        } else {
+            $("#cat").text("Cat " + data.slice(1) + " eating."); 
+        }
+    */
+    </script>
+</head>
+
+<body>
+    <!-- Cat diet 0: <input type="text" id="catDiet0" /><br>
+        Cat diet 1: <input type="text" id="catDiet1" /><br> -->
+        <div align="center">Status: <span id="cat"></span></div>
+</body>
+</html>
