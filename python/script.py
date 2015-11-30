@@ -4,6 +4,9 @@ from webiopi.devices.serial import Serial
 
 serial = Serial("ttyACM0", 9600)
 catID = 0
+# To do: restructure cat data using list of tuples:
+# cats records: ate, full, diet
+# cats = [(0.0, 0, 250), (0.0, 0, 250)]
 catAte = [0.0, 0.0]
 catFull = [0, 0]
 catDiet = [250, 250]
